@@ -1,0 +1,8 @@
+*~
+coupon.pid
+.DS_Store
+.env
+.idea
+runtime/*
+vendor
+go.sum
