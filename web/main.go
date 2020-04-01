@@ -7,6 +7,7 @@ import (
 	"github.com/ctbsea/Go-Message/config/route"
 	"github.com/ctbsea/Go-Message/datamodels"
 	"github.com/ctbsea/Go-Message/entry"
+	"github.com/ctbsea/Go-Message/gateway"
 	"github.com/ctbsea/Go-Message/repositories"
 	"github.com/ctbsea/Go-Message/services"
 	log2 "github.com/ctbsea/Go-Message/util/log"
@@ -35,11 +36,21 @@ func App() *iris.Application {
 	return app
 }
 
-func run(app *iris.Application, service *services.Service, validate *validator.Validate, config2 config.Config) {
-	route.Router(app, service, validate)
+func run(
+	app *iris.Application,
+	service *services.Service,
+	validate *validator.Validate,
+	config2 config.Config) {
+	//日志
 	r, close := log2.NewRequestLogger(config2)
 	defer close()
 	app.Use(r)
+	//限速器
+	app.Use(gateway.NewLimiter(config2.GateWay.LimiterOneSec))
+	//路由
+	route.Router(app, service, validate)
+	//性能日志
+	gateway.NewPprof(app)
 	iris.RegisterOnInterrupt(func() {
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)

@@ -26,10 +26,15 @@ type PathConfig struct {
 	Runtime string
 }
 
+type GateWay struct {
+	LimiterOneSec float64 `yaml:"limiterOneSec"`
+}
+
 type Config struct {
 	Run   *RunConfig
 	MySQL *MySQLConfig
 	Path  *PathConfig
+	GateWay *GateWay
 }
 
 //tmpConfig point
@@ -53,17 +58,25 @@ func checkRunConfig(config interface{}) {
 	}
 }
 
+
 func InitAllConfig(app *iris.Application) Config {
 	env := iris.YAML("./web/env.yml")
 	otherConfig := env.GetOther()
 	var config Config
+
 	mysqlConfig := &MySQLConfig{}
 	InitConfig(otherConfig, "mysql", mysqlConfig, nil)
 	config.MySQL = mysqlConfig
+
 	runConfig := &RunConfig{}
 	InitConfig(otherConfig, "run", runConfig, checkRunConfig)
 	config.Run = runConfig
+
 	runtime := "./runtime/"
 	config.Path = &PathConfig{Runtime: runtime}
+
+	gateway := &GateWay{}
+	InitConfig(otherConfig, "gateway", gateway, nil)
+	config.GateWay = gateway
 	return config
 }

@@ -63,9 +63,11 @@ func NewRequestLogger(config config.Config) (h iris.Handler, close func() error)
 			path,
 			message,
 			headerMessage)
-		logFile.Write([]byte(output))
+		_, err := logFile.Write([]byte(output))
+		if err != nil {
+			panic(err.Error())
+		}
 	}
-	//我们不想使用记录器，一些静态请求等
 	c.AddSkipper(func(ctx iris.Context) bool {
 		path := ctx.Path()
 		for _, ext := range excludeExtensions {
