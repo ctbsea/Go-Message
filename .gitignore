@@ -6,3 +6,4 @@ coupon.pid
 runtime/*
 vendor
 go.sum
+web/env.yml
