@@ -15,6 +15,7 @@ import (
 	"github.com/kataras/iris"
 	"go.uber.org/dig"
 	"log"
+	_ "net/http/pprof"
 	"time"
 )
 
@@ -50,7 +51,7 @@ func run(
 	//路由
 	route.Router(app, service, validate)
 	//性能日志
-	gateway.NewPprof(app)
+	//gateway.NewPprof(app)
 	iris.RegisterOnInterrupt(func() {
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
