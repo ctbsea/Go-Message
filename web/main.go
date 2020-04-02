@@ -48,10 +48,10 @@ func run(
 	app.Use(r)
 	//限速器
 	app.Use(gateway.NewLimiter(config2.GateWay.LimiterOneSec))
-	//路由
+
 	route.Router(app, service, validate)
 	//性能日志
-	//gateway.NewPprof(app)
+	gateway.NewPprof(app)
 	iris.RegisterOnInterrupt(func() {
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
