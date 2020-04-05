@@ -26,6 +26,10 @@ type PathConfig struct {
 	Runtime string
 }
 
+type EnvConfig struct {
+	Env string `yaml:"env"`
+}
+
 type GateWay struct {
 	LimiterOneSec float64 `yaml:"limiterOneSec"`
 }
@@ -35,6 +39,7 @@ type Config struct {
 	MySQL *MySQLConfig
 	Path  *PathConfig
 	GateWay *GateWay
+	Env *EnvConfig
 }
 
 //tmpConfig point
@@ -58,6 +63,12 @@ func checkRunConfig(config interface{}) {
 	}
 }
 
+func  checkEnvConfig(config interface{}) {
+	if config.(*EnvConfig).Env == "" {
+		config.(*EnvConfig).Env = "dev"
+	}
+}
+
 
 func InitAllConfig(app *iris.Application) Config {
 	env := iris.YAML("./web/env.yml")
@@ -78,5 +89,11 @@ func InitAllConfig(app *iris.Application) Config {
 	gateway := &GateWay{}
 	InitConfig(otherConfig, "gateway", gateway, nil)
 	config.GateWay = gateway
+
+	envConfig := &EnvConfig{}
+	InitConfig(otherConfig, "env", envConfig, checkEnvConfig)
+	config.Env = envConfig
 	return config
 }
+
+

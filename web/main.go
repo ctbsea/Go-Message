@@ -50,7 +50,7 @@ func run(
 	app.Use(gateway.NewLimiter(config2.GateWay.LimiterOneSec))
 	route.Router(app, service, validate)
 	//性能日志
-	gateway.NewPprof(app)
+	gateway.NewPprof(app, config2)
 	iris.RegisterOnInterrupt(func() {
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
