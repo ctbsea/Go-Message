@@ -8,7 +8,7 @@ import (
 
 func NewPprof(app *iris.Application) {
 
-	cmdlineHandler := handlerconv.FromStd(pprof.Cmdline)
+	cmdlineHandler := handlerconv.FromStd(pprof.Index)
 	profileHandler := handlerconv.FromStd(pprof.Profile)
 	symbolHandler := handlerconv.FromStd(pprof.Symbol)
 	goroutineHandler := handlerconv.FromStd(pprof.Handler("goroutine"))
@@ -16,8 +16,9 @@ func NewPprof(app *iris.Application) {
 	threadcreateHandler := handlerconv.FromStd(pprof.Handler("threadcreate"))
 	debugBlockHandler := handlerconv.FromStd(pprof.Handler("block"))
 	traceHandler := handlerconv.FromStd(pprof.Trace)
+	mutexHandler := handlerconv.FromStd(pprof.Handler("mutex"))
 
-	app.Any("/debug/pprof", cmdlineHandler)
+	app.Any("/debug/pprof/", cmdlineHandler)
 	app.Any("/debug/pprof/cmdline", cmdlineHandler)
 	app.Any("/debug/pprof/profile", profileHandler)
 	app.Any("/debug/pprof/trace", traceHandler)
@@ -26,4 +27,5 @@ func NewPprof(app *iris.Application) {
 	app.Any("/debug/pprof/threadcreate", threadcreateHandler)
 	app.Any("/debug/pprof/block", debugBlockHandler)
 	app.Any("/debug/pprof/goroutine", goroutineHandler)
+	app.Any("/debug/pprof/mutex", mutexHandler)
 }

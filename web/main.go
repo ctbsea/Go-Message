@@ -48,7 +48,6 @@ func run(
 	app.Use(r)
 	//限速器
 	app.Use(gateway.NewLimiter(config2.GateWay.LimiterOneSec))
-
 	route.Router(app, service, validate)
 	//性能日志
 	gateway.NewPprof(app)
