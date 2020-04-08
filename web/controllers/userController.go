@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/ctbsea/Go-Message/entry"
+	"github.com/ctbsea/Go-Message/entry/entryRequest"
 	"github.com/ctbsea/Go-Message/services"
 	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris"
@@ -12,23 +13,23 @@ type UserController struct {
 	Validate *validator.Validate
 }
 
-func (u *UserController) Login(ctx iris.Context) entry.Response {
-	var loginParams entry.LoginParams
+func (u *UserController) Login(ctx iris.Context) {
+	var loginParams entryRequest.LoginParams
 	if err := ctx.ReadJSON(&loginParams); err != nil {
-		return entry.Response{
+		ctx.JSON(entry.Response{
 			entry.INVAILD_PARAM,
 			err.Error(),
 			nil,
-		}
+		})
 	}
 	err := u.Validate.Struct(loginParams)
 	if err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); ok {
-			return entry.Response{
+			ctx.JSON(entry.Response{
 				entry.INVAILD_PARAM,
 				err.Error(),
 				nil,
-			}
+			})
 		}
 	}
 
@@ -38,21 +39,21 @@ func (u *UserController) Login(ctx iris.Context) entry.Response {
 	params["login_ip"] = ctx.Request().RemoteAddr
 	res, code := u.Service.UserService.Login(params)
 	if code != entry.SUCCESS {
-		return entry.Response{
+		ctx.JSON(entry.Response{
 			code,
 			"",
 			nil,
-		}
+		})
 	}
-	return entry.Response{
+	ctx.JSON(entry.Response{
 		entry.SUCCESS,
 		"",
 		res,
-	}
+	})
 }
 
 func (u *UserController) Register(ctx iris.Context) entry.Response {
-	var registerParams entry.RegisterParams
+	var registerParams entryRequest.RegisterParams
 	if err := ctx.ReadJSON(&registerParams); err != nil {
 		return entry.Response{
 			entry.INVAILD_PARAM,

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/ctbsea/Go-Message/config/db"
 	"github.com/ctbsea/Go-Message/datamodels"
+	"github.com/ctbsea/Go-Message/util"
 )
 
 type UserRep interface {
@@ -40,7 +41,7 @@ func (r *userRep) Update(where map[string]interface{}, update map[string]interfa
 func (r *userRep) InsertGetId(data map[string]string) uint {
 	params := &datamodels.User{
 		UserName: data["user_name"] ,
-		Pass: data["user_pass"],
+		Pass: util.GetPass(data["user_pass"]),
 	}
 	db := r.Db.Mysql.Create(params)
 	if db.Error != nil {

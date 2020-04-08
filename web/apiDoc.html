@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title> API Documentation </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .hidden {
+            display:none;
+        }
+        pre {
+            outline: 1px solid #ccc;
+            padding: 5px; margin: 5px;
+        }
+
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+
+    </style>
+    <style type="text/css">
+        pre.prettyprint {
+            border: 1px solid #ccc;
+            margin-bottom: 0;
+            padding: 9.5px;
+        }
+    </style>
+    <script>
+         
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+        function spaceJson(json){
+            var validJson = JSON.parse(json);
+            return JSON.stringify(validJson, undefined, 4);
+        }
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Doc</a>
+            <p class="navbar-text">Developed by Gophers at <a href="http://betacraft.co">Betacraft</a></p>
+        </div>
+            
+        
+    </div>
+    
+</nav>
+<div class="container-fluid" style="margin-top: 70px;margin-bottom: 20px;">
+    <div class="container-fluid">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+              <div class="panel-heading">Base Urls</div>
+              <div class="panel-body">
+                
+                    <p>Production : <strong>/</strong></p>
+                
+                    <p>Staging : <strong></strong></p>
+                
+              </div>
+            </div>    
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            
+                <li role="presentation"><a href="#0top" role="tab" data-toggle="tab">POST : /user/login</a></li>
+            
+        <ul>
+    </div>
+    <div class="col-md-8 tab-content">
+        
+        <div id="0top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  36da61af-6be1-0c95-61c0-bacc327577e6</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-0" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 36da61af-6be1-0c95-61c0-bacc327577e6\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-0">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAxLCJpc3MiOiJJcmlzIn0.kYPl0gYb9IRLlbL6_HZ5x618cW1VYE3G8BTxb0s7G2M&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAxLCJpc3MiOiJJcmlzIn0.kYPl0gYb9IRLlbL6_HZ5x618cW1VYE3G8BTxb0s7G2M\",\"Id\":3}}");
+                            document.getElementById('response-body-0-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a6bacedd-78d0-1428-0c74-22cf44231ec8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-1" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a6bacedd-78d0-1428-0c74-22cf44231ec8\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-1">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAyLCJpc3MiOiJJcmlzIn0.ms62u0G6UpCn-mRlQgHikJRL02nWtpC-v3q9GR-1Gfg&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAyLCJpc3MiOiJJcmlzIn0.ms62u0G6UpCn-mRlQgHikJRL02nWtpC-v3q9GR-1Gfg\",\"Id\":3}}");
+                            document.getElementById('response-body-0-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  d56259f8-1ea8-2815-d41c-a4666a433a57</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-2" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" d56259f8-1ea8-2815-d41c-a4666a433a57\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-2').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-2">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAzLCJpc3MiOiJJcmlzIn0.zPERhRAtECgQHfNdQ9yk-KH6kcOekUtqcQr5xYqgZi8&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDEwMywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4MzAzLCJpc3MiOiJJcmlzIn0.zPERhRAtECgQHfNdQ9yk-KH6kcOekUtqcQr5xYqgZi8\",\"Id\":3}}");
+                            document.getElementById('response-body-0-2').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a8ff8cd4-04fa-c723-0212-962f981a65ea</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-3" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a8ff8cd4-04fa-c723-0212-962f981a65ea\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-3').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5776</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-3">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDIzNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDM2LCJpc3MiOiJJcmlzIn0.j7k1hAlYEgSBI5iYR2wDQ6gtTX_ZFiumxAwnm3YI0f8&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5776"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDIzNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDM2LCJpc3MiOiJJcmlzIn0.j7k1hAlYEgSBI5iYR2wDQ6gtTX_ZFiumxAwnm3YI0f8\",\"Id\":3}}");
+                            document.getElementById('response-body-0-3').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  fef2d461-0564-19b9-d194-2b5266a1c9b1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-4" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" fef2d461-0564-19b9-d194-2b5266a1c9b1\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-4').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5776</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-4">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0NSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ1LCJpc3MiOiJJcmlzIn0._dwv5FD9wFIdMNb2cO36b4U1jMhzWamZNC6xC7QVYhA&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5776"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0NSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ1LCJpc3MiOiJJcmlzIn0._dwv5FD9wFIdMNb2cO36b4U1jMhzWamZNC6xC7QVYhA\",\"Id\":3}}");
+                            document.getElementById('response-body-0-4').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  08a1aafe-7f93-1c31-2373-5afa8d20100a</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-5" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 08a1aafe-7f93-1c31-2373-5afa8d20100a\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-5').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5776</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-5">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0NywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ3LCJpc3MiOiJJcmlzIn0.gtz_jQ2X_6wtRCrMu74TdZ9VXoK50uY7UyQLR0z4vXY&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5776"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0NywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ3LCJpc3MiOiJJcmlzIn0.gtz_jQ2X_6wtRCrMu74TdZ9VXoK50uY7UyQLR0z4vXY\",\"Id\":3}}");
+                            document.getElementById('response-body-0-5').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  29d8cccf-0fa9-62bd-e9a0-4d04be3cfca6</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-6" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 29d8cccf-0fa9-62bd-e9a0-4d04be3cfca6\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-6').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5788</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-6">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0OCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ4LCJpc3MiOiJJcmlzIn0.4xraOTkClRRSf9DMoJ-xmL5vHaZYf56QJALPj3IkTgU&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5788"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0OCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ4LCJpc3MiOiJJcmlzIn0.4xraOTkClRRSf9DMoJ-xmL5vHaZYf56QJALPj3IkTgU\",\"Id\":3}}");
+                            document.getElementById('response-body-0-6').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  d8bd25bc-0823-3d6b-c5ff-6747113975cb</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-7" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" d8bd25bc-0823-3d6b-c5ff-6747113975cb\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-7').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5788</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-7">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0OSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ5LCJpc3MiOiJJcmlzIn0.QST6DLgy8fXfHkembtxW97ixAKqZjcYEU8g91ydwk8w&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5788"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI0OSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDQ5LCJpc3MiOiJJcmlzIn0.QST6DLgy8fXfHkembtxW97ixAKqZjcYEU8g91ydwk8w\",\"Id\":3}}");
+                            document.getElementById('response-body-0-7').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  f97f52e4-365e-e72d-585a-96602def4087</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-8" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" f97f52e4-365e-e72d-585a-96602def4087\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-8').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:5788</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-8">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI1MSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDUxLCJpc3MiOiJJcmlzIn0.h7bsLf3GlED2O2rIb3W0rcJdbrtgPW_y34mdzOBUpCQ&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:5788"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDI1MSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4NDUxLCJpc3MiOiJJcmlzIn0.h7bsLf3GlED2O2rIb3W0rcJdbrtgPW_y34mdzOBUpCQ\",\"Id\":3}}");
+                            document.getElementById('response-body-0-8').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  009b0184-fa46-acbf-5079-91af5a2e3838</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-9" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 009b0184-fa46-acbf-5079-91af5a2e3838\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-9').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:6255</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-9">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDcyOCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4OTI4LCJpc3MiOiJJcmlzIn0.pEnpBa405oG4fKflm7pGMIMm02l6337gR0qVXi2HGfQ&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:6255"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MDcyOCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzM4OTI4LCJpc3MiOiJJcmlzIn0.pEnpBa405oG4fKflm7pGMIMm02l6337gR0qVXi2HGfQ\",\"Id\":3}}");
+                            document.getElementById('response-body-0-9').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  f9b0c3aa-d976-d912-035c-1a41dd7c729e</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-10" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" f9b0c3aa-d976-d912-035c-1a41dd7c729e\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-10').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-10">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA2OSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjY5LCJpc3MiOiJJcmlzIn0.DPe_bKf8ACK30s5-xNc3c7rXtgb_1QzCm_gWFSeJSgs&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA2OSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjY5LCJpc3MiOiJJcmlzIn0.DPe_bKf8ACK30s5-xNc3c7rXtgb_1QzCm_gWFSeJSgs\",\"Id\":3}}");
+                            document.getElementById('response-body-0-10').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  c371a2a8-f692-9acc-32c1-07c69a1550db</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-11" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" c371a2a8-f692-9acc-32c1-07c69a1550db\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-11').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-11">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3MywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjczLCJpc3MiOiJJcmlzIn0.Wo_WK5W47OovA6lSRHn0UCcKML-8xzcaAi2ShgnKE80&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3MywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjczLCJpc3MiOiJJcmlzIn0.Wo_WK5W47OovA6lSRHn0UCcKML-8xzcaAi2ShgnKE80\",\"Id\":3}}");
+                            document.getElementById('response-body-0-11').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  1116d840-ec08-bc13-de54-8fa3f4d68bc7</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-12" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 1116d840-ec08-bc13-de54-8fa3f4d68bc7\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-12').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-12">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3NSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjc1LCJpc3MiOiJJcmlzIn0.Eg7LsFlI7oYrOcwIAcE7D6TkFKtJEN_L1i77FDnaZwE&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3NSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjc1LCJpc3MiOiJJcmlzIn0.Eg7LsFlI7oYrOcwIAcE7D6TkFKtJEN_L1i77FDnaZwE\",\"Id\":3}}");
+                            document.getElementById('response-body-0-12').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  fb3b7759-8088-d38d-d6bb-5e46c891fa12</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-13" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" fb3b7759-8088-d38d-d6bb-5e46c891fa12\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-13').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-13">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3NiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjc2LCJpc3MiOiJJcmlzIn0.kZEKRIlQgZx5IQOwZbHJLv1ulkekgxVgBk8X5hlHIXk&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA3NiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjc2LCJpc3MiOiJJcmlzIn0.kZEKRIlQgZx5IQOwZbHJLv1ulkekgxVgBk8X5hlHIXk\",\"Id\":3}}");
+                            document.getElementById('response-body-0-13').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  913bb565-ef4b-0389-6e95-9221828a7574</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-14" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 913bb565-ef4b-0389-6e95-9221828a7574\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-14').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-14">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA5MiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjkyLCJpc3MiOiJJcmlzIn0.m7cEBNsF2YvZqPTKlLi1LlRL9f_sxwmSDgRJFN0jVFo&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA5MiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjkyLCJpc3MiOiJJcmlzIn0.m7cEBNsF2YvZqPTKlLi1LlRL9f_sxwmSDgRJFN0jVFo\",\"Id\":3}}");
+                            document.getElementById('response-body-0-14').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  7bf68ba9-fd7d-0fed-4663-e605a3ebe050</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-15" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 7bf68ba9-fd7d-0fed-4663-e605a3ebe050\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-15').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-15">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA5NCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjk0LCJpc3MiOiJJcmlzIn0.lm7W2cf74ifTZ1SzExJECI87ujttdgSgK87aQmhK_fM&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjA5NCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMjk0LCJpc3MiOiJJcmlzIn0.lm7W2cf74ifTZ1SzExJECI87ujttdgSgK87aQmhK_fM\",\"Id\":3}}");
+                            document.getElementById('response-body-0-15').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a1c1655a-b213-f7df-e737-3a11f159210e</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-16" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a1c1655a-b213-f7df-e737-3a11f159210e\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-16').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-16">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEwMSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzAxLCJpc3MiOiJJcmlzIn0.fuugAjy3QhA4EpEBRK4PrS4mXW3RUypg-46vq3P77Wo&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEwMSwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzAxLCJpc3MiOiJJcmlzIn0.fuugAjy3QhA4EpEBRK4PrS4mXW3RUypg-46vq3P77Wo\",\"Id\":3}}");
+                            document.getElementById('response-body-0-16').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  4af83242-750d-1889-b342-811c4d60b5fb</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-17" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 4af83242-750d-1889-b342-811c4d60b5fb\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-17').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-17">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEwNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzA2LCJpc3MiOiJJcmlzIn0.Yic62YnwAiMo4qH78xFhR0GiRi_aKGULXjjmlrjvVHI&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEwNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzA2LCJpc3MiOiJJcmlzIn0.Yic62YnwAiMo4qH78xFhR0GiRi_aKGULXjjmlrjvVHI\",\"Id\":3}}");
+                            document.getElementById('response-body-0-17').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  4c021def-4301-fb1d-59a2-b12da616281d</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-18" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 4c021def-4301-fb1d-59a2-b12da616281d\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-18').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-18">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjExNCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzE0LCJpc3MiOiJJcmlzIn0.fFSRYboU58i_2ZqcR_ZipHOkbBGfpX9q20yAgDLZNZ0&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjExNCwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzE0LCJpc3MiOiJJcmlzIn0.fFSRYboU58i_2ZqcR_ZipHOkbBGfpX9q20yAgDLZNZ0\",\"Id\":3}}");
+                            document.getElementById('response-body-0-18').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a30950fd-7979-30a2-a4fd-5123359a4719</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-19" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a30950fd-7979-30a2-a4fd-5123359a4719\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-19').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-19">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyMiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzIyLCJpc3MiOiJJcmlzIn0.G69Csi_82WdBQ_tti_WXrgI6PXV857wzHfFASYHTM8w&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyMiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzIyLCJpc3MiOiJJcmlzIn0.G69Csi_82WdBQ_tti_WXrgI6PXV857wzHfFASYHTM8w\",\"Id\":3}}");
+                            document.getElementById('response-body-0-19').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  243ba2c0-fd5b-9515-37c1-7f17319b75d5</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-20" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 243ba2c0-fd5b-9515-37c1-7f17319b75d5\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-20').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-20">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzI2LCJpc3MiOiJJcmlzIn0.LeZjQpMEX0EqldRa6CSlJfm_eXdBBcSo3Msvdvrvc7Q&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyNiwianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzI2LCJpc3MiOiJJcmlzIn0.LeZjQpMEX0EqldRa6CSlJfm_eXdBBcSo3Msvdvrvc7Q\",\"Id\":3}}");
+                            document.getElementById('response-body-0-20').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  89265cca-bb39-fb62-6c50-b211919d9681</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Dest</td>
+                        <td>  empty</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Mode</td>
+                        <td>  cors</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sec-Fetch-Site</td>
+                        <td>  none</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-21" class="prettyprint">{&#34;userName&#34;:&#34;ctbsea&#34; ,&#34;userPass&#34;: &#34;ctbsea&#34;}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 89265cca-bb39-fb62-6c50-b211919d9681\r","Sec-Fetch-Dest":" empty\r","Sec-Fetch-Mode":" cors\r","Sec-Fetch-Site":" none\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userName\":\"ctbsea\" ,\"userPass\": \"ctbsea\"}");
+                            document.getElementById('request-body-0-21').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json; charset=UTF-8</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Duration</td>
+                        <td> 1</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Limit</td>
+                        <td> 1.00</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Forwarded-For</td>
+                        <td> </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>X-Rate-Limit-Request-Remote-Addr</td>
+                        <td> 127.0.0.1:7713</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-21">{&#34;code&#34;:0,&#34;msg&#34;:&#34;&#34;,&#34;data&#34;:{&#34;Token&#34;:&#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyNywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzI3LCJpc3MiOiJJcmlzIn0.DHAmuC3oD_NBoUzcP9RSeMjZaLZi4yLsTs1MoMLuzW4&#34;,&#34;Id&#34;:3}}</pre>
+                <script>
+                     
+                    var responseHeader ={"Content-Type":"application/json; charset=UTF-8","X-Rate-Limit-Duration":"1","X-Rate-Limit-Limit":"1.00","X-Rate-Limit-Request-Forwarded-For":"","X-Rate-Limit-Request-Remote-Addr":"127.0.0.1:7713"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"code\":0,\"msg\":\"\",\"data\":{\"Token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMb2dpbiI6eyJ1aWQiOjMsInVuYW1lIjoiY3Ric2VhIn0sImV4cCI6MTU4NjM0MjEyNywianRpIjoiSXJpcy05NTk3IiwiaWF0IjoxNTg2MzQwMzI3LCJpc3MiOiJJcmlzIn0.DHAmuC3oD_NBoUzcP9RSeMjZaLZi4yLsTs1MoMLuzW4\",\"Id\":3}}");
+                            document.getElementById('response-body-0-21').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+    </div>
+</div>
+</div>
+<hr>
+</body>
+</html>

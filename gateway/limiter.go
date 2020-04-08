@@ -3,6 +3,7 @@ package gateway
 //优化成全局以及单路由
 import (
 	"fmt"
+	"github.com/ctbsea/Go-Message/entry/entryReturn"
 	"github.com/didip/tollbooth"
 	"github.com/didip/tollbooth/limiter"
 	"github.com/kataras/iris/context"
@@ -22,10 +23,8 @@ func limitHandler(l *limiter.Limiter) context.Handler {
 	return func(ctx context.Context) {
 		httpError := tollbooth.LimitByRequest(l, ctx.ResponseWriter(), ctx.Request())
 		if httpError != nil {
-			ctx.ContentType(l.GetMessageContentType())
-			ctx.StatusCode(httpError.StatusCode)
-			ctx.WriteString(httpError.Message)
-			ctx.StopExecution()
+			entryReturn.CtxResException(ctx,
+				&entryReturn.BaseStruct{httpError.StatusCode, httpError.Message, nil})
 			return
 		}
 		ctx.Next()

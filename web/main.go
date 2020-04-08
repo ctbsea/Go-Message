@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/ctbsea/Go-Message/config"
 	"github.com/ctbsea/Go-Message/config/db"
 	"github.com/ctbsea/Go-Message/config/route"
@@ -10,7 +11,6 @@ import (
 	"github.com/ctbsea/Go-Message/gateway"
 	"github.com/ctbsea/Go-Message/repositories"
 	"github.com/ctbsea/Go-Message/services"
-	log2 "github.com/ctbsea/Go-Message/util/log"
 	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris"
 	"go.uber.org/dig"
@@ -42,16 +42,19 @@ func run(
 	service *services.Service,
 	validate *validator.Validate,
 	config2 config.Config) {
-	//日志
-	r, close := log2.NewRequestLogger(config2)
-	defer close()
-	app.Use(r)
-	//限速器
-	app.Use(gateway.NewLimiter(config2.GateWay.LimiterOneSec))
+	//网关定义在路由之前
+	handler, deferFunc := gateway.GateWay(app, config2)
+	app.Use(handler...)
+	defer func() {
+		for _, fun := range deferFunc {
+			fun()
+		}
+	}()
+	//路由
 	route.Router(app, service, validate)
-	//性能日志
-	gateway.NewPprof(app, config2)
+	//关闭通知
 	iris.RegisterOnInterrupt(func() {
+		fmt.Println("close ing")
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
 		defer cancel()

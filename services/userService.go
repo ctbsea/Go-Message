@@ -4,12 +4,13 @@ import (
 	"github.com/ctbsea/Go-Message/entry"
 	"github.com/ctbsea/Go-Message/repositories"
 	"github.com/ctbsea/Go-Message/util"
+	"github.com/ctbsea/Go-Message/util/jwtfuc"
 	"time"
 )
 
 type LoginRep struct {
-	Token   string
-	Id      uint
+	Token string
+	Id    uint
 }
 
 type RegRep struct {
@@ -42,9 +43,11 @@ func (r *userService) Login(params map[string]string) (data LoginRep, code int) 
 	//update
 	updateData := make(map[string]interface{})
 	updateData["LoginAt"] = time.Now()
-	updateData["LoginIp"] = params["login_ip"]
+	updateData["LoginIp"] = util.InetAtoN(params["login_ip"])
 	r.Rep.UserRep.Update(where, updateData)
-	return LoginRep{Token: util.GetToken(userInfo.ID), Id: userInfo.ID}, entry.SUCCESS
+	//token生成
+	token := jwtfuc.Sign(&jwtfuc.ClaimsInfo{UserID: userInfo.ID, Username: userInfo.UserName})
+	return LoginRep{Token: token, Id: userInfo.ID}, entry.SUCCESS
 }
 
 func (r *userService) Register(params map[string]string) (data RegRep, code int) {
