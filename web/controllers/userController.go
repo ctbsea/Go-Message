@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/ctbsea/Go-Message/entry"
 	"github.com/ctbsea/Go-Message/entry/entryRequest"
 	"github.com/ctbsea/Go-Message/services"
@@ -15,24 +16,17 @@ type UserController struct {
 
 func (u *UserController) Login(ctx iris.Context) {
 	var loginParams entryRequest.LoginParams
-	if err := ctx.ReadJSON(&loginParams); err != nil {
+	requestParams , err := entryRequest.RequestParams(ctx, u.Validate, &loginParams)
+	fmt.Println(requestParams , err)
+	if err.Code != 0 {
 		ctx.JSON(entry.Response{
-			entry.INVAILD_PARAM,
-			err.Error(),
+			err.Code,
+			err.Msg,
 			nil,
 		})
+		return
 	}
-	err := u.Validate.Struct(loginParams)
-	if err != nil {
-		if _, ok := err.(*validator.InvalidValidationError); ok {
-			ctx.JSON(entry.Response{
-				entry.INVAILD_PARAM,
-				err.Error(),
-				nil,
-			})
-		}
-	}
-
+	loginParams = requestParams.(entryRequest.LoginParams)
 	params := make(map[string]string)
 	params["user_name"] = loginParams.UserName
 	params["user_pass"] = loginParams.UserPass
@@ -44,6 +38,7 @@ func (u *UserController) Login(ctx iris.Context) {
 			"",
 			nil,
 		})
+		return
 	}
 	ctx.JSON(entry.Response{
 		entry.SUCCESS,

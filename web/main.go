@@ -47,7 +47,7 @@ func run(
 	app.Use(handler...)
 	defer func() {
 		for _, fun := range deferFunc {
-			fun()
+			_ = fun()
 		}
 	}()
 	//路由
@@ -58,10 +58,10 @@ func run(
 		timeout := 5 * time.Second
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
 		defer cancel()
-		app.Shutdown(ctx)
+		_ = app.Shutdown(ctx)
 	})
 	ipPort := config2.Run.IP + ":" + config2.Run.Port
-	app.Run(iris.Addr(ipPort), iris.WithoutInterruptHandler)
+	_ = app.Run(iris.Addr(ipPort), iris.WithoutInterruptHandler)
 }
 
 func main() {
