@@ -4,7 +4,7 @@ import (
 	"github.com/ctbsea/Go-Message/entry"
 	"github.com/ctbsea/Go-Message/repositories"
 	"github.com/ctbsea/Go-Message/util"
-	"github.com/ctbsea/Go-Message/util/jwtfuc"
+	"github.com/ctbsea/Go-Message/util/jwtlogin"
 	"time"
 )
 
@@ -46,7 +46,7 @@ func (r *userService) Login(params map[string]string) (data LoginRep, code int) 
 	updateData["LoginIp"] = util.InetAtoN(params["login_ip"])
 	r.Rep.UserRep.Update(where, updateData)
 	//token生成
-	token := jwtfuc.Sign(&jwtfuc.ClaimsInfo{UserID: userInfo.ID, Username: userInfo.UserName})
+	token := jwtlogin.Sign(&jwtlogin.ClaimsInfo{UserID: userInfo.ID, Username: userInfo.UserName})
 	return LoginRep{Token: token, Id: userInfo.ID}, entry.SUCCESS
 }
 

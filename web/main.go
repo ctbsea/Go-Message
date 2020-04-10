@@ -8,12 +8,14 @@ import (
 	"github.com/ctbsea/Go-Message/config/route"
 	"github.com/ctbsea/Go-Message/datamodels"
 	"github.com/ctbsea/Go-Message/entry"
-	"github.com/ctbsea/Go-Message/gateway"
+	"github.com/ctbsea/Go-Message/globalMiddle"
 	"github.com/ctbsea/Go-Message/repositories"
 	"github.com/ctbsea/Go-Message/services"
+	"github.com/ctbsea/Go-Message/util/logger"
 	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris"
 	"go.uber.org/dig"
+	"go.uber.org/zap"
 	"log"
 	_ "net/http/pprof"
 	"time"
@@ -28,7 +30,7 @@ func BuildContainer() *dig.Container {
 	container.Provide(repositories.InitRep)
 	container.Provide(services.InitService)
 	container.Provide(entry.InitValidator)
-	container.Provide(services.NewUserService)
+	container.Provide(logger.NewLogger)
 	return container
 }
 
@@ -41,9 +43,10 @@ func run(
 	app *iris.Application,
 	service *services.Service,
 	validate *validator.Validate,
+	log  *zap.SugaredLogger,
 	config2 config.Config) {
-	//网关定义在路由之前
-	handler, deferFunc := gateway.GateWay(app, config2)
+	//全局中间件定义在路由之前
+	handler, deferFunc := globalMiddle.GateWay(app, config2 ,log)
 	app.Use(handler...)
 	defer func() {
 		for _, fun := range deferFunc {

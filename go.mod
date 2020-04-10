@@ -19,7 +19,7 @@ require (
 	github.com/iris-contrib/formBinder v5.0.0+incompatible // indirect
 	github.com/iris-contrib/httpexpect v0.0.0-20180314041918-ebe99fcebbce // indirect
 	github.com/iris-contrib/middleware/jwt v0.0.0-20191219204441-78279b78a367 // indirect
-	github.com/iris-contrib/middleware/newrelic v0.0.0-20191219204441-78279b78a367
+	github.com/iris-contrib/middleware/newrelic v0.0.0-20191219204441-78279b78a367 // indirect
 	github.com/iris-contrib/middleware/tollboothic v0.0.0-20191219204441-78279b78a367 // indirect
 	github.com/jessevdk/go-flags v1.4.0 // indirect
 	github.com/jinzhu/gorm v1.9.11
@@ -27,6 +27,8 @@ require (
 	github.com/kataras/golog v0.0.10
 	github.com/kataras/iris v11.1.1+incompatible
 	github.com/klauspost/compress v1.9.4 // indirect
+	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible
+	github.com/lestrrat-go/strftime v1.0.1 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/newrelic/go-agent v3.4.0+incompatible // indirect
 	github.com/sergi/go-diff v1.0.0 // indirect
@@ -37,6 +39,7 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	go.uber.org/dig v1.8.0
+	go.uber.org/zap v1.14.1
 	golang.org/x/crypto v0.0.0-20191219195013-becbf705a915 // indirect
 	golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421 // indirect
 	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect

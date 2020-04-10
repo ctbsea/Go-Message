@@ -1,11 +1,10 @@
-package gateway
+package globalMiddle
 
 import (
 	"github.com/betacraft/yaag/yaag"
-	"github.com/kataras/iris"
 )
 
-func ApiDoc(app *iris.Application) {
+func ApiDoc() {
 	yaag.Init(&yaag.Config{ // <- IMPORTANT, init the middleware.
 		On:       true,
 		DocTitle: "Doc",

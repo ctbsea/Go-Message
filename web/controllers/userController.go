@@ -14,37 +14,37 @@ type UserController struct {
 	Validate *validator.Validate
 }
 
-func (u *UserController) Login(ctx iris.Context) {
+func (u *UserController) Login(ctx iris.Context) entry.Response {
 	var loginParams entryRequest.LoginParams
 	requestParams , err := entryRequest.RequestParams(ctx, u.Validate, &loginParams)
-	fmt.Println(requestParams , err)
 	if err.Code != 0 {
-		ctx.JSON(entry.Response{
+		return entry.Response{
 			err.Code,
 			err.Msg,
 			nil,
-		})
-		return
+		}
+
 	}
-	loginParams = requestParams.(entryRequest.LoginParams)
+	data := requestParams.(*entryRequest.LoginParams)
 	params := make(map[string]string)
-	params["user_name"] = loginParams.UserName
-	params["user_pass"] = loginParams.UserPass
+	params["user_name"] = data.UserName
+	params["user_pass"] = data.UserPass
 	params["login_ip"] = ctx.Request().RemoteAddr
 	res, code := u.Service.UserService.Login(params)
 	if code != entry.SUCCESS {
-		ctx.JSON(entry.Response{
+		return entry.Response{
 			code,
 			"",
 			nil,
-		})
-		return
+		}
+
 	}
-	ctx.JSON(entry.Response{
+	fmt.Println(2)
+	return entry.Response{
 		entry.SUCCESS,
 		"",
 		res,
-	})
+	}
 }
 
 func (u *UserController) Register(ctx iris.Context) entry.Response {

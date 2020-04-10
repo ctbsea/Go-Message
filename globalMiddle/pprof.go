@@ -1,4 +1,4 @@
-package gateway
+package globalMiddle
 
 import (
 	"github.com/ctbsea/Go-Message/config"

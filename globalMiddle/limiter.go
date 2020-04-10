@@ -1,4 +1,4 @@
-package gateway
+package globalMiddle
 
 //优化成全局以及单路由
 import (
@@ -11,7 +11,7 @@ import (
 )
 
 func NewLimiter(num float64) context.Handler {
-	fmt.Printf("gateway-Limiter : start limiter max %f  every one sec \n", num)
+	fmt.Printf("globalMiddle-Limiter : start limiter max %f  every one sec \n", num)
 	lmt := tollbooth.NewLimiter(num, &limiter.ExpirableOptions{DefaultExpirationTTL: time.Hour})
 	lmt.SetMessage("You have reached maximum request limit.")
 	lmt.SetMessageContentType("application/json; charset=utf-8")
@@ -25,8 +25,8 @@ func limitHandler(l *limiter.Limiter) context.Handler {
 		if httpError != nil {
 			entryReturn.CtxResException(ctx,
 				&entryReturn.BaseStruct{httpError.StatusCode, httpError.Message, nil})
-			return
 		}
 		ctx.Next()
 	}
+
 }

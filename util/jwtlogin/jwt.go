@@ -1,4 +1,4 @@
-package jwtfuc
+package jwtlogin
 
 import (
 	"github.com/ctbsea/Go-Message/entry"
