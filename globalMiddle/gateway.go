@@ -16,12 +16,14 @@ func GateWay(app *iris.Application, config config.Config, zapLogger *zap.Sugared
 	//日志
 	gate = append(gate, AccessLog(zapLogger))
 	deferFunc = append(deferFunc, zapLogger.Sync)
-	if config.Env.Env == "dev" {
-		//性能日志
-		NewPprof(app, config)
+	if config.Env.OpenDoc  {
 		//文档
 		ApiDoc()
 		gate = append(gate, irisyaag.New())
+	}
+	if config.Env.OpenPprof {
+		//性能日志
+		NewPprof(app, config)
 	}
 	return gate, deferFunc
 }

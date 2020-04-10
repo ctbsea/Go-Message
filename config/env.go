@@ -28,6 +28,8 @@ type PathConfig struct {
 
 type EnvConfig struct {
 	Env string `yaml:"env"`
+	OpenDoc bool `yaml:"OpenDoc"`
+	OpenPprof bool `yaml:"openPprof"`
 }
 
 type GateWay struct {
