@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
 	github.com/ajg/form v1.5.1 // indirect
+	github.com/arthurkiller/rollingwriter v1.1.2
 	github.com/betacraft/yaag v1.0.0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/didip/tollbooth v4.0.2+incompatible
@@ -30,6 +31,7 @@ require (
 	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.1 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
+	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/newrelic/go-agent v3.4.0+incompatible // indirect
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect

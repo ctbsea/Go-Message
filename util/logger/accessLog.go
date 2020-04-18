@@ -2,8 +2,8 @@
 package logger
 
 import (
-	"fmt"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 	"strconv"
 	"time"
 
@@ -11,11 +11,11 @@ import (
 )
 
 type requestLoggerMiddleware struct {
-	logger *zap.SugaredLogger
+	logger *zap.Logger
 	config Config
 }
 
-func NewAccessLog(logger *zap.SugaredLogger, cfg ...Config) context.Handler {
+func NewAccessLog(logger *zap.Logger, cfg ...Config) context.Handler {
 	c := DefaultConfig()
 	if len(cfg) > 0 {
 		c = cfg[0]
@@ -43,7 +43,7 @@ func (l *requestLoggerMiddleware) ServeHTTP(ctx context.Context) {
 
 	//no time.Since in order to format it well after
 	endTime = time.Now()
-	latency = endTime.Sub(startTime)
+	latency = endTime.Sub(startTime) * 1000
 
 	if l.config.Status {
 		status = strconv.Itoa(ctx.GetStatusCode())
@@ -65,38 +65,27 @@ func (l *requestLoggerMiddleware) ServeHTTP(ctx context.Context) {
 		}
 	}
 
-	var message interface{}
+	var message []interface{}
 	if ctxKeys := l.config.MessageContextKeys; len(ctxKeys) > 0 {
 		for _, key := range ctxKeys {
-			msg := ctx.Values().Get(key)
-			if message == nil {
-				message = msg
-			} else {
-				message = fmt.Sprintf(" %v %v", message, msg)
-			}
+			message = append(message, ctx.Values().Get(key))
 		}
 	}
-	var headerMessage interface{}
+	var headerMessage []interface{}
 	if headerKeys := l.config.MessageHeaderKeys; len(headerKeys) > 0 {
 		for _, key := range headerKeys {
-			msg := ctx.GetHeader(key)
-			if headerMessage == nil {
-				headerMessage = msg
-			} else {
-				headerMessage = fmt.Sprintf(" %v %v", headerMessage, msg)
-			}
+			headerMessage = append(headerMessage, ctx.GetHeader(key))
 		}
 	}
 
-	// no new line, the framework's logger is responsible how to render each log.
-	line := fmt.Sprintf("%v %4v %s %s %s", status, latency, ip, method, path)
-	if message != nil {
-		line += fmt.Sprintf(" %v", message)
+	filed := []zapcore.Field{
+		zap.String("status", status),
+		zap.Duration("latency", latency),
+		zap.String("ip", ip),
+		zap.String("method", method),
+		zap.String("path", path),
+		zap.Any("message", message),
+		zap.Any("headerMessage", headerMessage),
 	}
-
-	if headerMessage != nil {
-		line += fmt.Sprintf(" %v", headerMessage)
-	}
-	fmt.Println(line)
-	l.logger.Info(line)
+	l.logger.Info("AccessLog", filed...)
 }

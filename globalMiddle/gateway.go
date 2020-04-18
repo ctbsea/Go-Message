@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func GateWay(app *iris.Application, config config.Config, zapLogger *zap.SugaredLogger) ([]context.Handler, []func() error) {
+func GateWay(app *iris.Application, config config.Config, zapLogger *zap.Logger) ([]context.Handler, []func() error) {
 	gate := []context.Handler{}
 	deferFunc := []func() error{}
 	//限速器

@@ -43,7 +43,7 @@ func run(
 	app *iris.Application,
 	service *services.Service,
 	validate *validator.Validate,
-	log  *zap.SugaredLogger,
+	log  *zap.Logger,
 	config2 config.Config) {
 	//全局中间件定义在路由之前
 	handler, deferFunc := globalMiddle.GateWay(app, config2 ,log)

@@ -17,7 +17,7 @@ var excludeExtensions = [...]string{
 	".svg",
 }
 
-func AccessLog(zapLogger *zap.SugaredLogger) context.Handler {
+func AccessLog(zapLogger *zap.Logger) context.Handler {
 	c := logger.Config{
 		Status: true,
 		IP:     true,
